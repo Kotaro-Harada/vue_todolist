@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   # バリデーション
   validates :name, presence: true, length: { maximum: 255 }
-  validates :description, length: { maximum: 100 }, allow_blank: true
+  validates :description, length: { maximum: 1000 }, allow_blank: true
   validates :start_datetime, presence: true
   validates :end_datetime, presence: true
   validate :end_datetime_after_start_datetime
