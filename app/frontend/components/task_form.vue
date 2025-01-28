@@ -1,14 +1,8 @@
 <template>
   <div>
     <h1>Task Form</h1>
-    <p v-if="successmessage">{{ successmessage }}</p>
-    <div v-if="errormessages">
-      <ul>
-        <!-- v-forディレクティブを使用してエラーメッセージをリスト表示 -->
-        <!-- :key="error"は各エラーメッセージに一意のキーを与える -->
-        <li v-for="error in errormessages" :key="error">{{ error }}</li>
-      </ul>
-    </div>
+    <success_message :successmessage="successmessage" />
+    <error_messages :errormessages="errormessages" />
     <form @submit.prevent="submitTask">
       <div>
         <label for="name">Task Name</label>
@@ -32,7 +26,14 @@
 </template>
 
 <script>
+import success_message from "./success_message.vue";
+import error_messages from "./error_messages.vue";
+
 export default {
+  components: {
+    success_message,
+    error_messages,
+  },
   data() {
     return {
       task: {
@@ -60,11 +61,13 @@ export default {
           const message = await response.json();
 
           this.successmessage = Object.values(message).flat().join("");
+          this.errormessages = [];
           this.task = { name: "", description: "", start_datetime: "", end_datetime: "" };
         } else {
           const errors = await response.json();
           this.errormessages = Object.entries(errors)
             .map(([key, message]) => `${key}: ${message.join(", ")}`);
+          this.successmessage = "";
         };
       } catch (error) {
         console.log("Error:", error);
