@@ -28,12 +28,9 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // import '~/index.css'
 
 import { createApp } from 'vue';
-import TaskForm from '../../frontend/components/task_form.vue';
+import App from '../../frontend/components/app.vue';
+import router from '../../frontend/routes/route';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = document.getElementById('task-form');
-  if (app) {
-    createApp(TaskForm).mount(app);
-  }
-});
-
+const app = createApp(App);
+app.use(router);
+app.mount('#app');

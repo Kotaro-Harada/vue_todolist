@@ -6,8 +6,10 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@vitejs/plugin-vue": "^5.2.1",
+    "axios": "^1.7.9",
     "turbolinks": "^5.2.0",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "version": "0.1.0",
   "devDependencies": {
