@@ -30,10 +30,9 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 import { createApp } from 'vue';
 import App from '../../frontend/components/app.vue';
 import router from '../../frontend/routes/route';
-import axios from 'axios'
+import axios from 'axios';
 
 const app = createApp(App);
 app.use(router);
+app.config.globalProperties.$axios = axios;
 app.mount('#app');
-
-app.config.globalProperties.$axios = axiosInstancel;

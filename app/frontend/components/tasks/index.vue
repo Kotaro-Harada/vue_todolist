@@ -23,10 +23,12 @@ export default {
       tasks: [],
     };
   },
+
   async created() {
     try {
-      const response = await this.$axios.get('tasks/index');
+      const response = await this.$axios.get('api/tasks');
       this.tasks = response.data
+      console.log(this.tasks);
     } catch (error) {
       console.error(error);
     }

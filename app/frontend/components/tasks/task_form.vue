@@ -49,14 +49,8 @@ export default {
   methods: {
     async submitTask() {
       try {
-        const response = await fetch("/tasks", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content,
-          },
-          body: JSON.stringify({ task: this.task }),
-        });
+        const response = await this.$axios.post(`${window.location.origin}/api/tasks`, this.task );
+        debugger;
         if (response.ok) {
           const message = await response.json();
 

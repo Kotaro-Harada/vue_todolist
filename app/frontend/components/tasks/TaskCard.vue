@@ -2,10 +2,10 @@
   <div>
     <div class="card">
       <div class="card-header">
-	      {{ task.title }}
+	      <p>title:{{ task.title }}</p>
       </div>
       <div class="card-body">
-	      <p class="card-text">{{ task.description }}</p>
+	      <p class="card-text">description:{{ task.description }}</p>
       </div>
       <div>
 	      <p>{{ task.start_datetime }}</p>
@@ -23,11 +23,7 @@ export default {
     task: Object,
   },
   created() {
-    try {
-      axios.get('/tasks/index')
-    } catch(error) {
-      console.log('エラー:', error);
-    }
+
   }
 };
 </script>
